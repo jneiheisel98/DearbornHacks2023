@@ -7,13 +7,25 @@ import java.io.IOException;
 public class Main {
 
     //Calc Average Pressure call API
+    public int getAvgPressure(){
+
+        return 0;
+    }
 
     //Calc Average Fuel Consumption call API
+    public int getAvgFuel(){
+
+        return 0;
+    }
 
     //Error Catching
 
     //Alert of Driver
+    public String alertDriver(){
 
+        String Alert = "Pull over, Danger, Leak";
+        return Alert;
+    }
     //Counter Measures
 
     // Shut Valve
@@ -24,14 +36,6 @@ public class Main {
 
     // Safe Pressure
 
-
-
-
-
-    public static void main(String[] args){
-
-
-    }
 
 }
 
