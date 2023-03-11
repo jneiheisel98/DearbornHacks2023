@@ -36,3 +36,11 @@ public class Main {
 }
 
 
+
+    public string(String args){
+
+        switch (args) {
+
+        }
+
+    }
