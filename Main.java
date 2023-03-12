@@ -128,7 +128,7 @@ public class Main {
     // Safe Pressure
 
 
-    public void limpHomeMode{
+    public void limpHomeMode() throws InterruptedException {
 
     //1. Upon detecting failure mode, alert is sent to user interface
         //call alert with status 6
@@ -160,4 +160,3 @@ public class Main {
 }
 
 
-/
