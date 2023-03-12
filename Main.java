@@ -12,6 +12,9 @@ public class Main {
         return 0;
     }
 
+    private int avgExAvgPressure;
+    private int avgExAvgFuelCon;
+
     //Calc Average Fuel Consumption call API
     public int getAvgFuel(){
 
@@ -96,6 +99,10 @@ public class Main {
             6. Adjust rate of ambient air flow into fuel cell (to adjust fuel cell temperature)
 
          */
+
+    // 1. Direct fuel from either tank 1 / tank 2 into purge relief valve
+        //This will take input of which tank needs to be purged
+
 
 
     // Shut Valve
