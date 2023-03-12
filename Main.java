@@ -65,7 +65,12 @@ public class Main {
         return Alerts[x];
     }
 
-
+    public String vehicleStatus(int z){
+        //enumerate the vehicle status
+        //Inserting status to stop vehicle from moving during charge, that may cause potential leak. driveEnable
+        String[] Status = {"Off", "Charge", "Drive"
+        };
+    }
 
     //Counter Measures
 
