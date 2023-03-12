@@ -1,6 +1,3 @@
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpClient;
 import java.io.IOException;
 
 
@@ -123,6 +120,20 @@ public class Main {
 
 
     // Shut Valve
+    public boolean setValve(){
+        boolean closeValve = true;
+        boolean openValve = false;
+        boolean valve;
+
+        if (alertDriver(6) == "6"){
+            valve = closeValve;
+        }
+        else {
+            valve = openValve;
+        }
+        return valve;
+
+    }
 
     // Run off battery Call API
 
