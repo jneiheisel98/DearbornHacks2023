@@ -6,27 +6,38 @@ import java.io.IOException;
 
 public class Main {
 
-    //Calc Average Pressure call API
-    public int getAvgPressure(){
-
-        return 0;
-    }
-
     private int avgExAvgPressure;
     private int avgExAvgFuelCon;
 
-    //Calc Average Fuel Consumption call API
-    public int getAvgFuel(){
 
-        return 0;
+    //Calc Average Pressure call API
+    public double getAvgPressure(int sTime, int eTime, double sPres, double ePres){
+
+        double time = eTime-sTime;
+        double curAvgPres = (sPres + ePres) / 2;
+        double curAvgPresCon = curAvgPres / time;
+
+        return curAvgPresCon;
     }
+
+    //Calc Average Fuel Consumption call API
+    public double getAvgFuel(int sTime, int eTime, double sFuel, double eFeul){
+
+        double time = eTime-sTime;
+        double curAvgFuel = (sFuel + eFeul) / 2;
+        double curAvgFuelCon = curAvgFuel / time;
+        return curAvgFuelCon;
+
+    }
+
+
 
     //Error Catching
 
     //Alert of Driver
     public String alertDriver(int x){
         //enumerate the alerts
-
+        //insert error checking
         String[] Alerts = {"Fuel Pressure Low",
                 "Fuel Consumption Above Normal Levels - Fuel Leak Possible",
                 "Fuel Consumption High - Fuel Leak Probable",
@@ -37,6 +48,7 @@ public class Main {
         return Alerts[x];
     }
     //Counter Measures
+
         /*
         Counter measures should include reactions to different situations
 
