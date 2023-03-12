@@ -8,6 +8,8 @@ public class Main {
 
     private int avgExAvgPressure;
     private int avgExAvgFuelCon;
+    private int valveTank1; //values should be from [0, 100] indicating fully closed at 0, fully open at 100
+    private int valveTank2; //values should be from [0, 100] indicating fully closed at 0, fully open at 100
 
 
     //Calc Average Pressure call API
@@ -142,7 +144,12 @@ public class Main {
                 exceededTime = true;
             }
         //3. Program then begins to ramp down fuel input into the fuel cell
-
+            //while either valve is open, slowly decrease the percentage every by 1 every 100ms
+            while(valveTank1 > 0 || valveTank2 > 0) {
+                if(valveTank1 > 0){ valveTank1 = valveTank1 - 1; }
+                if(valveTank2 > 0){ valveTank2 = valveTank2 - 1; }
+                Thread.sleep(500); //change this to change how fast it ramps down
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
