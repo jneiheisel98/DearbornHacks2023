@@ -114,4 +114,31 @@ public class Main {
     // Safe Pressure
 
 
+    public void limpHomeMode{
+
+    //1. Upon detecting failure mode, alert is sent to user interface
+        //call alert with status 6
+        alertDriver(6); //"Fuel Tank Leak - Vehicle Transitioning to Battery Operation"
+
+        System.out.println("Press any key to continue...");
+
+    //2. User input confirms the execution of Limp home mode or it activates after 30 seconds
+        try {
+            boolean exceededTime = false;
+            while (System.in.available() == 0 && !exceededTime) {
+                Thread.sleep(30000);
+                exceededTime = true;
+            }
+        //3. Program then begins to ramp down fuel input into the fuel cell
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }
+
+
+/
