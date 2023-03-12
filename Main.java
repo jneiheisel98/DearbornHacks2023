@@ -29,7 +29,25 @@ public class Main {
 
     }
 
+    public double tankDeviation(int sTime, int eTime, double sPres, double ePres, double sFuel, double eFeul){
 
+        double time = eTime-sTime;
+        double curAvgPres = (sPres + ePres) / 2;
+        double curAvgPresCon = curAvgPres / time;
+        double compPres = curAvgPresCon / ePres;
+
+        double curAvgFuel = (sFuel + eFeul) / 2;
+        double curAvgFuelCon = curAvgFuel / time;
+        double compFuel = curAvgFuelCon / eFeul;
+
+        //Comparing Press and Fuel
+        double sCompPF = sPres + sFuel;
+        double eCompPF = compPres + compFuel;
+        //Total difference of Pressure and Fuel
+        double difPF = eCompPF / sCompPF;
+
+        return difPF;
+    }
 
     //Error Catching
 
@@ -125,9 +143,12 @@ public class Main {
         boolean openValve = false;
         boolean valve;
 
+        //Close valve to stop leak.
         if (alertDriver(6) == "6"){
             valve = closeValve;
         }
+
+        //Open valve to allow fueling.
         else {
             valve = openValve;
         }
