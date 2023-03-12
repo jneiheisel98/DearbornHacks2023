@@ -33,6 +33,9 @@ public class Main {
 
         return Alerts[x];
     }
+
+
+
     //Counter Measures
         /*
         Counter measures should include reactions to different situations
