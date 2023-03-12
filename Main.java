@@ -6,24 +6,40 @@ import java.io.IOException;
 
 public class Main {
 
-    //Calc Average Pressure call API
-    public int getAvgPressure(){
+    private int avgExAvgPressure;
+    private int avgExAvgFuelCon;
+    private int valveTank1; //values should be from [0, 100] indicating fully closed at 0, fully open at 100
+    private int valveTank2; //values should be from [0, 100] indicating fully closed at 0, fully open at 100
 
-        return 0;
+
+    //Calc Average Pressure call API
+    public double getAvgPressure(int sTime, int eTime, double sPres, double ePres){
+
+        double time = eTime-sTime;
+        double curAvgPres = (sPres + ePres) / 2;
+        double curAvgPresCon = curAvgPres / time;
+
+        return curAvgPresCon;
     }
 
     //Calc Average Fuel Consumption call API
-    public int getAvgFuel(){
+    public double getAvgFuel(int sTime, int eTime, double sFuel, double eFeul){
 
-        return 0;
+        double time = eTime-sTime;
+        double curAvgFuel = (sFuel + eFeul) / 2;
+        double curAvgFuelCon = curAvgFuel / time;
+        return curAvgFuelCon;
+
     }
+
+
 
     //Error Catching
 
     //Alert of Driver
     public String alertDriver(int x){
         //enumerate the alerts
-
+        //insert error checking
         String[] Alerts = {"Fuel Pressure Low",
                 "Fuel Consumption Above Normal Levels - Fuel Leak Possible",
                 "Fuel Consumption High - Fuel Leak Probable",
@@ -37,6 +53,7 @@ public class Main {
 
 
     //Counter Measures
+
         /*
         Counter measures should include reactions to different situations
 
@@ -100,6 +117,10 @@ public class Main {
 
          */
 
+    // 1. Direct fuel from either tank 1 / tank 2 into purge relief valve
+        //This will take input of which tank needs to be purged
+
+
 
     // Shut Valve
 
@@ -110,4 +131,35 @@ public class Main {
     // Safe Pressure
 
 
+    public void limpHomeMode() throws InterruptedException {
+
+    //1. Upon detecting failure mode, alert is sent to user interface
+        //call alert with status 6
+        alertDriver(6); //"Fuel Tank Leak - Vehicle Transitioning to Battery Operation"
+
+        System.out.println("Press any key to continue...");
+
+    //2. User input confirms the execution of Limp home mode or it activates after 30 seconds
+        try {
+            boolean exceededTime = false;
+            while (System.in.available() == 0 && !exceededTime) {
+                Thread.sleep(30000);
+                exceededTime = true;
+            }
+        //3. Program then begins to ramp down fuel input into the fuel cell
+            //while either valve is open, slowly decrease the percentage every by 1 every 100ms
+            while(valveTank1 > 0 && valveTank2 > 0) {
+                if(valveTank1 > 0){ valveTank1 = valveTank1 - 1; }
+                if(valveTank2 > 0){ valveTank2 = valveTank2 - 1; }
+                Thread.sleep(500); //change this to change how fast it ramps down
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }
+
+
