@@ -70,6 +70,7 @@ public class Main {
         //Inserting status to stop vehicle from moving during charge, that may cause potential leak. driveEnable
         String[] Status = {"Off", "Charge", "Drive"
         };
+        return Status[z];
     }
 
     //Counter Measures
